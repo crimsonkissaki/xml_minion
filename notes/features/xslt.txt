@@ -1,0 +1,91 @@
+===================+=========+====================
+                      Why?
+===================+=========+====================
+
+XSLT is a pain.
+- define the mapping between different schemas
+- manually retrieve/validate/compare/sanitize/assign data between nodes
+- xslt syntax is extremely verbose
+- check/enforce # of elements
+
+Converting to code-based XML transformations is also a pain,
+especially when you already have working XSLT transformations set up.
+
+Converting between XML and native Python data structures is a pain.
+
+The same mapping code must be duplicated wherever the XML needs to be used.
+
+You have to re-define domain-specific XML schema each time you want to use it,
+requiring careful attention to ensure consistent implementation.
+
+
+
+
+
+
+
+
+
+
+<ns:ResidenceAddress>
+  <ns:LineOne>123 FAKE STREET</ns:LineOne>
+  <ns:CityName>NEW YORK</ns:CityName>
+  <ns:CountryID>US</ns:CountryID>
+  <ns:Postcode>10023</ns:Postcode>
+  <ns:StateOrProvinceCountrySub-DivisionID>NY</ns:StateOrProvinceCountrySub-DivisionID>
+  <ns:Privacy>
+    <ns:PrivacyIndicator>false</ns:PrivacyIndicator>
+  </ns:Privacy>
+</ns:ResidenceAddress>
+
+
+class Element(name, namespace=None, children=None)
+    # type: (str, str, list)
+
+class Address(Element):
+    def __init__(name, namespace, children, data_type):
+        _children = []
+        _attributes = OrderedDict()
+    
+    def add_child():
+    
+    def del_child():
+    
+    def set_attr():  # add & change
+    
+    def del_attr():
+
+    def set_value():  # set/change
+
+
+
+ra = Address(
+  name='ResidenceAddress',  # if not defined, it uses the class name
+  namespace='',  # automatically inherits from parent if not specified
+  children=[
+    {name: 'LineOne', namespace: INHERIT, children: None, dataType: 'string', value='123 St'},
+    {name: 'CityName'},
+    Address(
+      name='BusinessAddress',
+      value='123 Ln'
+    )
+  ],
+  data_type=''
+)
+
+
+
+ra = Address(
+'''
+<ns:ResidenceAddress>
+  <ns:LineOne>123 FAKE STREET</ns:LineOne>
+  <ns:CityName>NEW YORK</ns:CityName>
+  <ns:CountryID>US</ns:CountryID>
+  <ns:Postcode>10023</ns:Postcode>
+  <ns:StateOrProvinceCountrySub-DivisionID>NY</ns:StateOrProvinceCountrySub-DivisionID>
+  <ns:Privacy>
+    <ns:PrivacyIndicator>false</ns:PrivacyIndicator>
+  </ns:Privacy>
+</ns:ResidenceAddress>
+'''
+)

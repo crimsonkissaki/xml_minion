@@ -1,0 +1,156 @@
+===================+=========+====================
+                      What?
+===================+=========+====================
+
+To simplify common XML tasks in a simple unified interface.
+
+
+
+===================+=========+====================
+                       Why?
+===================+=========+====================
+
+We repeat the same dozen actions on virtually every XML document that comes into the system.
+
+Having this functionality available in a common XML object will simplify the code base and
+provide consistent behavior across all projects, especially if this object can be made
+available as a general library.
+
+
+===================+=========+====================
+                       How?
+===================+=========+====================
+
+Use existing lxml.etree package for base functionality
+
+Built in user-configurable data validation & formatting rules
+
+Simplify common XML manipulations:
+  - stripping namespaces
+  - XSL transformations
+  - defining to/from XML schemas
+  
+Data type conversions:
+  - dict <-> etree
+  - string <-> etree
+  - file <-> etree
+  - suds object <-> etree
+  
+Sanity savers:
+  - automatically create XML schema from:
+    - WSDL
+    - XML
+  - store XML schema as:
+    - JSON
+    - Python
+  - 
+    
+Handle very large XML files with minimal overhead
+
+
+===================+=========+====================
+                      Why?
+===================+=========+====================
+
+
+
+
+
+
+
+
+
+Data Type:
+- Any Type
+  - all complex types
+- Any Simple Type
+  - duration
+  - dateTime
+  - time
+  - data
+  - gYearMonth
+  - gYear
+  - gMonthDay
+  - gDay
+  - gMonth
+  - string
+    - normalized string
+      - token
+        - language
+        - name
+        - nmtoken
+  - boolean
+  - base64binary
+  - hex binary
+  - float
+  - decimal
+  - double
+  - anyURI
+  - QName
+  - NOTATION
+
+
+Validation:
+- regex
+- 
+
+
+
+Node/Element:
+- tag name
+- namespace
+- data type
+- children
+- attributes
+- value
+- optional/mandatory
+- allowed # of instances
+  - max
+  - min
+- UUID (to allow quick reference so we don't have to keep traversing xpath)
+
+
+instructions/comment/text ...
+
+
+
+more easily convert xml schemas & handle xml
+
+create a Document
+within the Document, create Elements
+give Element Attributes
+give Element Value
+within Element, create Elements
+
+
+
+
+
+------------------------------
+default type: string (safest)
+
+
+
+
+------------------------------
+
+Things this HAS to do:
+
+create 'Document'
+create 'Element'
+put 'Element' in 'Document'
+put 'Element' in 'Element'
+assign 'Attribute' to 'Element'
+assign 'Value' to 'Element'
+validate 'Value' in 'Element'
+
+allow conditional situations
+  - if is business, will have OrganizationData element
+  - if is individual, will have PersonData element
+  - if 'is lease', value is 'L'
+
+
+
+------------------------------
+
+
